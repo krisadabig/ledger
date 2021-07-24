@@ -1,18 +1,26 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="box-border">
+    <div class="bg-purple-600 h-32 flex">
+      <div class="m-auto">
+        <h2 class="text-7xl text-white h-auto">Ledger</h2>
+      </div>
+    </div>
+    <div class="flex justify-between">
+      <create-form class="sticky top-0 w-2/6" />
+      <record-table class=""></record-table>
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import CreateForm from "@/components/CreateForm";
+import RecordTable from "@/components/RecordTable";
 
 export default {
-  name: 'Home',
   components: {
-    HelloWorld
-  }
-}
+    CreateForm,
+    RecordTable,
+  },
+};
 </script>

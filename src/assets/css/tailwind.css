@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .createLabel {
+    @apply text-xl text-red-900 text-right m-3 font-semibold;
+  }
+  .createInput {
+    @apply border-2 rounded mb-3 w-60;
+  }
+  .createBtn {
+    @apply border rounded m-4 w-40 text-xl text-green-50;
+  }
+  .dataTable {
+    @apply border-b-2 border-green-600;
+  }
+}
