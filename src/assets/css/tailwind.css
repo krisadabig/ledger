@@ -13,6 +13,6 @@
     @apply border rounded m-4 w-40 text-xl text-green-50;
   }
   .dataTable {
-    @apply border-b-2 border-green-600;
+    @apply border-b-2 border-gray-600;
   }
 }
