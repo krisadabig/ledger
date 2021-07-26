@@ -60,13 +60,11 @@
 import CreateForm from "@/components/CreateForm";
 import RecordTable from "@/components/RecordTable";
 import DataStore from "@/store/index";
-import BalanceGraph from "../components/BalanceGraph.vue";
 
 export default {
   components: {
     CreateForm,
     RecordTable,
-    BalanceGraph,
   },
   data() {
     return {

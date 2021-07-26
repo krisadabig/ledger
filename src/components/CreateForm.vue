@@ -68,7 +68,7 @@ export default {
       },
       modelConfig: {
         type: "string",
-        mask: "DD-MM-YYYY", // Uses 'iso' if missing
+        mask: "DD/MM/YYYY", // Uses 'iso' if missing
       },
     };
   },
