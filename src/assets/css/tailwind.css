@@ -4,15 +4,19 @@
 
 @layer components {
   .createLabel {
-    @apply text-xl text-red-900 text-right m-3 font-semibold;
+    @apply text-2xl text-indigo-700 text-right m-3;
   }
   .createInput {
     @apply border-2 rounded mb-3 w-60;
   }
   .createBtn {
-    @apply border rounded m-4 w-40 text-xl text-green-50;
+    @apply border rounded m-4 w-40 text-xl text-green-50 h-12;
   }
   .dataTable {
     @apply border-b-2 border-gray-600;
+  }
+
+  .inputDiv {
+    @apply flex-wrap text-right;
   }
 }

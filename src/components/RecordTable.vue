@@ -14,29 +14,33 @@
         </thead>
         <tbody class="">
           <tr
-            v-for="(data, index) in dataRecords"
+            v-for="(data, index) in DataRecordsFromOther"
             :key="index"
-            class="text-lg h-14 even:bg-gray-200 odd:bg-gray-50"
+            class="
+              text-lg
+              h-14
+              even:bg-gray-200
+              odd:bg-gray-50
+              hover:bg-gray-300
+            "
           >
             <td class="dataTable">{{ data.date }}</td>
             <td class="dataTable">{{ data.desc }}</td>
-            <td class="dataTable">{{ data.receive }}</td>
-            <td class="dataTable">{{ data.paid }}</td>
+            <td
+              class="dataTable font-bold"
+              :class="data.receive ? 'text-green-500' : ''"
+            >
+              {{ data.receive }}
+            </td>
+            <td
+              class="dataTable font-bold"
+              :class="data.paid ? 'text-red-500' : ''"
+            >
+              {{ data.paid }}
+            </td>
           </tr>
         </tbody>
       </table>
-    </div>
-    <div>
-      <label for="totalReceive" class="createLabel">Total Receive : </label>
-      <label for="amount">{{ totalReceive }}</label>
-    </div>
-    <div>
-      <label for="totalPaid" class="createLabel">Total Paid :</label>
-      <label for="amount">{{ totalPaid }}</label>
-    </div>
-    <div>
-      <label for="balance" class="createLabel">Balance : </label>
-      <label for="balance">{{ balance }}</label>
     </div>
   </div>
 </template>
@@ -44,18 +48,34 @@
 <script>
 import DataStore from "@/store/index";
 export default {
+  props: ["DataRecordsFromOther", "addReceive", "addPaid"],
   data() {
     return {
-      dataRecords: [],
+      dataRecords: null,
       balance: 0,
       totalReceive: 0,
       totalPaid: 0,
+      receiveProp: this.addReceive,
     };
   },
+  computed: {
+    // clear duplicate date next time!
+  },
+  watch: {
+    receiveProp: function (newreceive, oldreceive) {
+      this.totalReceive += this.addReceive;
+      this.totalPaid += this.addPaid;
+      this.balance = this.totalReceive - this.totalPaid;
+      console.log(this.balance);
+      console.log(this.receive);
+      console.log(this.paid);
+    },
+  },
   created() {
-    this.fetchRecord();
+    this.dataRecords = this.DataRecordsFromOther;
     this.calBalance();
   },
+  mounted() {},
   methods: {
     async fetchRecord() {
       await DataStore.dispatch("fetchRecord");
@@ -64,6 +84,7 @@ export default {
       console.log(this.dataRecords);
     },
     calBalance() {
+      console.log(this.dataRecords);
       this.dataRecords.forEach((element) => {
         if (element.receive) {
           this.totalReceive += parseInt(element.receive);
@@ -75,7 +96,7 @@ export default {
     },
   },
   beforeUpdate() {
-    this.calBalance();
+    // this.calBalance();
   },
 };
 </script>

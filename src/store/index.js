@@ -19,11 +19,7 @@ export default new Vuex.Store({
       state.data = res.data;
     },
     add(state, { payload }) {
-      state.data.push(payload);
-    },
-    edit(state, { payload }) {
-      state.data[payload.index].date = payload.date;
-      state.data[payload.index].desc = payload.desc;
+      state.data.unshift(payload);
     },
   },
   actions: {
@@ -33,9 +29,6 @@ export default new Vuex.Store({
     },
     addRecord({ commit }, payload) {
       commit("add", { payload });
-    },
-    editRecord({ commit }, payload) {
-      commit("edit", { payload });
     },
   },
   modules: {},
